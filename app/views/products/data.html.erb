@@ -1,0 +1,23 @@
+<%= flash[:notice] %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Parameter</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.quantity %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div>
+	<br/>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <%= render 'layouts/bootstrap' %>
+
+  </head>
+
+  <body>
+  	<div class="jumbotron"> 
+  		<h2>Montclair State University</h2>
+  	</div> 
+  	<%= render 'layouts/navbar' %>
+  	<div class="container-fluid"> 
+    	<%= yield %>
+         <!--- <%= link_to "about", root_path %>//-->
+        
+
+  		<%= render 'layouts/footer' %>
+  </div> 
+  </body>
+</html>
