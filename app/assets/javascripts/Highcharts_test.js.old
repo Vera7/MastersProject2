@@ -1,0 +1,58 @@
+
+
+$(function () {
+
+    $(document).ready(function () {
+
+        // Build the chart
+        Highcharts.chart('container', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'This is a sample chart'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Names',
+                colorByPoint: true,
+                data: [{
+                    name: 'Purple',
+                    y: 56.33
+                }, {
+                    name: 'Green',
+                    y: 24.03,
+                    sliced: true,
+                    selected: true
+                }, {
+                    name: 'Orange',
+                    y: 10.38
+                }, {
+                    name: 'Red',
+                    y: 4.77
+                }, {
+                    name: 'Yello',
+                    y: 0.91
+                }, {
+                    name: 'Blue',
+                    y: 0.2
+                }]
+            }]
+        });
+    });
+});

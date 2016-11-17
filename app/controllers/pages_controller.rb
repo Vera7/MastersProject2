@@ -6,5 +6,13 @@ class PagesController < ApplicationController
   end
 
   def data
+  
   end
+
+  def chart
+  
+  end
+
+
+
 end

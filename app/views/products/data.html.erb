@@ -1,3 +1,60 @@
+<h3>Import a CSV File</h3>
+  <%= form_tag pages_chart_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import CSV" %>
+  <% end %>
+</div>
+
+
+<form action="upload_file.php" method="post"
+enctype="multipart/form-data">
+<label for="file">Filename:</label>
+<input type="file" name="file" id="file"><br>
+<input type="submit" name="submit" value="Submit">
+</form>
+
+
+
+
+
+
+
+<div id="dvImportSegments" class="fileupload ">
+    <fieldset>
+        <legend>Upload your CSV File</legend>
+            <input type="file" name="File Upload" id="txtFileUpload" accept=".csv" />
+   </fieldset>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<h1>Data Input</h1>
+
+<body>
+ 
+  <div id="mining">
+<formm>
+    <strong> Select which data mining techniques you would like to use on this data: </strong>
+      
+      <input TYPE="submit" name="submit" value="Clean Data1"/>
+      <input TYPE="submit" name="submit" value="Clean Data2"/>
+      <input TYPE="submit" name="submit" value="Clean Data3"/>
+      <input TYPE="submit" name="submit" value="Generate Graph"/>
+
+    </form>
+    <br/>
+  </div>
+</body>
+<br/>
+
 <%= flash[:notice] %>
 <table class="table">
   <thead>
@@ -8,16 +65,70 @@
       <th>Quantity</th>
     </tr>
   </thead>
+
   <tbody>
-    <% @products.each do |product| %>
+    <% if @products %>
       <tr>
         <td><%= product.id %></td>
         <td><%= product.name %></td>
         <td><%= product.price %></td>
         <td><%= product.quantity %></td>
       </tr>
+      <% else %>
+      <tr><td>No Information found </td></tr>
     <% end %>
   </tbody>
+  
 </table>
-<div>
-	<br/>
+
+  
+  <br/>
+
+
+
+
+<h1>Data Input</h1>
+<p>Masters Project for MSU <a href="http://www.google.com">Masters Project </a> This is a test to make sure it is saving.
+</p>
+
+<body>
+ 
+  <div id="content">
+        
+      <form method="post" action="review_upload.php" enctype="multipart/form-data">
+
+    Upload CSV File:
+      <input type="file" name="file"> 
+      <br/><br/>
+      <input TYPE="submit" name="submit" value="Submit"/>
+
+    </form>
+    <br/>
+  </div>
+</body>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Parameter</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @products %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.quantity %></td>
+      </tr>
+      <% else %>
+      <tr><td>No Information found </td></tr>
+    <% end %>
+  </tbody>
+  
+</table>
+  <br/>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     collection { post :import }
   end
 
-  root to: "products#index"
+  root to: "pages#index"
 
 #end
   #Products test ends here 
@@ -22,11 +22,19 @@ Rails.application.routes.draw do
 
   get 'products/data'
 
+  #match 'products/data' => 'products#index'
+
   get 'pages/about'
 
   get 'pages/contact'
 
   get 'pages/data'
+
+  get 'pages/chart'
+
+  get 'pages/index'
+
+  get 'products/chart'
 
   #root 'pages#about'
 

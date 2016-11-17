@@ -1,0 +1,6 @@
+$.ajax({
+        url: url_link,
+        dataType: 'json',
+        type: 'POST',
+        data: dataToSend
+      })

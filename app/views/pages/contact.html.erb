@@ -1,6 +1,107 @@
 
+<html>
+<head>
+  <h2>Contact Me</h2>
+  
+</head>
+<body>
 
-<h1>Contact Us</h1>
-<p>Find me in app/views/pages/contact.html.erb</p>
+	<p>If you have any questions, requests, or feedback in regards to this Master's Project, please feel free to email me using the form below. </p>
+
+
+
+	<form method="GET" action="mailto:MoralesL427@gmail.com" enctype="text/plain">
+	    
+	    <div class="form-group">
+	    	<label for="Textarea">Subject</label>
+	   	 	<input type="text" class="form-control" name="subject" />
+	    </div>
+
+	    <div class="form-group">
+	    	<label for="Textarea">Name</label>
+	    	<input type="text" class="form-control" name="Name" />
+	    </div>
+
+	    <div class="form-group">
+	    	<label for="Textarea">Email</label>
+	    	<input type="text" class="form-control" name="E-Mail Address" />
+	    </div>
+
+	    <div class="form-group">
+	    	<label for="Textarea">Message</label>
+	    	<textarea name="Message" class="form-control" id="Textarea" rows="3"></textarea>
+	    </div>
+
+	    <br/>
+	    <button type="submit" class="btn btn-primary">Submit</button>
+
+	    <input type="hidden" name="body" />
+
+	</form>
+
+
+	<!--
+	<form method="GET" action="mailto:MoralesL427@gmail.com" enctype="text/plain">
+	  
+	  <div class="form-group">
+	    <label for="InputEmail1">Email address</label>
+	    <input type="email" class="form-control" id="InputEmail1" aria-describedby="Help" placeholder="Enter email">
+	    <small id="Help" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	  </div>
+
+	  <div class="form-group">
+	    <label for="Textarea">Name</label>
+	     <textarea class="form-control" id="Textarea" rows="1"></textarea>
+	  </div>
+	  <div class="form-group">
+	    <label for="subject">Select Subject</label>
+	    <select class="form-control" id="subject">
+	      <option>Feedback</option>
+	      <option>Request</option>
+	      <option>Suggestions</option>
+	    </select>
+	  </div>
+	  <div class="form-group">
+	    <label for="Textarea">Message</label>
+	    <textarea class="form-control" id="Textarea" rows="3"></textarea>
+	  </div>
+	  <button type="submit" class="btn btn-primary">Submit</button>
+	  <input type="hidden" name="body" />
+	</form>
+	-->
+
+
+
+	<script>
+	   var form = document.getElementsByTagName('form')[0];
+	   form.addEventListener('submit',contact,false);
+	   function contact(e) {
+	      // Prevent Default Form Submission
+	      e.preventDefault();
+
+	      var target = e.target || e.srcElement;
+	      var i = 0;
+	      var message = '';
+
+	      // Loop Through All Input Fields
+	      for(i = 0; i < target.length; ++i) {
+	         // Check to make sure it's a value. Don't need to include Buttons
+	         if(target[i].type != 'text' && target[i].type != 'textarea') {
+	                // Skip to next input since this one doesn't match our rules
+	            continue;
+	         }
+
+	         // Add Input Name and value followed by a line break
+	         message += target[i].name + ' : ' + target[i].value + "\r\n";
+	      }
+	      // Modify the hidden body input field that is required for the mailto: scheme
+	      target.elements["body"].value = message;
+
+	      // Submit the form since we previously stopped it. May cause recursive loop in some browsers? Should research this.
+	      this.submit();
+	   }
+</script>
+</body>
+</html>
 
 

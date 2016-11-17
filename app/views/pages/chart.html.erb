@@ -1,0 +1,115 @@
+
+<html>
+<head>
+    <title></title>
+    <!--
+    <style type="text/css">
+        body
+        {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+        table
+        {
+            border: 1px solid #ccc;
+        }
+        table th
+        {
+            background-color: #F7F7F7;
+            color: #333;
+            font-weight: bold;
+        }
+        table th, table td
+        {
+            padding: 5px;
+            border-color: #ccc;
+        }
+    </style>
+    -->
+</head>
+<body>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+            $(function () {
+                $("#upload").bind("click", function () {
+                    var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/; // this will accept csv and txt files 
+                    if (regex.test($("#fileUpload").val().toLowerCase())) {
+                        if (typeof (FileReader) != "undefined") {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                var table = $("<table/>");
+                                var rows = e.target.result.split("\n");
+                                for (var i = 0; i < rows.length; i++) {
+                                    var row = $("<tr/>");
+                                    var cells = rows[i].split(",");
+                                    for (var j = 0; j < cells.length; j++) {
+                                        var cell = $("<td/>");
+                                        cell.html(cells[j]);
+                                        row.append(cell);
+                                    }
+                                    table.append(row);
+                                }
+                                $("#CSV").html('');
+                                $("#CSV").append(table);
+                            }
+                            reader.readAsText($("#fileUpload")[0].files[0]);
+                        } else {
+                            alert("This browser does not support HTML5.");
+                        }
+                    } else {
+                        alert("Please upload a valid CSV file.");
+                    }
+
+            Highcharts.chart('container', {
+            data: {
+                table: 'CSV'
+            },
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Uploaded CSV File'
+            },
+            yAxis: {
+                allowDecimals: false,
+                title: {
+                    text: 'Units'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+
+            
+                });
+            });
+        </script>
+
+        <!--Attempt to generate multple graphs-->
+
+
+
+        <input type="file" id="fileUpload" />
+        <input type="button" id="upload" class="btn btn-primary" value="Upload" />
+        <hr />
+        
+        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto">
+        </div>
+
+        <div class="table-responsive" id="CSV">
+            <table class="table" id="datatable">
+            </table>
+        </div>
+      
+      <!-- <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div> //If this is kept here, the data that is uploaded will print above the chart, and the graph will be generated below the printed data
+        -->
+</body>
+</html>

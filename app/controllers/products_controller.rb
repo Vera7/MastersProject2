@@ -6,10 +6,16 @@ class ProductsController < ApplicationController
   def import
   	#begin
   		Product.import(params[:file])
-    	redirect_to root_url, notice: "Products imported."
+    	redirect_to pages_data_url, notice: "Data was successfully imported."
   	#rescue  
      # 	redirect_to root_url, notice: "Invalid CSV file format."
   		
   	#end
+
+    def data
+    @prodcuts = Product.all 
+  
+  end
+
   end
 end
