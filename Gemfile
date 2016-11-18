@@ -52,4 +52,6 @@ gem "highcharts-rails"
 
 gem 'rails_12factor', group: :production
 
+ruby "2.3.0"
+
 
