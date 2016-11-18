@@ -52,6 +52,8 @@ gem "highcharts-rails"
 
 gem 'rails_12factor', group: :production
 
+gem 'pg'
+
 ruby "2.3.0"
 
 
